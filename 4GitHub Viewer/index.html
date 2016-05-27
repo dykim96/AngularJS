@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app="githubViewer">
+
+<head>
+  <meta charset="utf-8" />
+  <title>AngularJS Plunker</title>
+  <script>
+    document.write('<base href="' + document.location + '" />');
+  </script>
+  <link rel="stylesheet" href="style.css" />
+  <script data-require="angular.js@1.4.x" src="https://code.angularjs.org/1.4.9/angular.js" data-semver="1.4.9"></script>
+  <script src="app.js"></script>
+</head>
+
+<body ng-controller="MainController">
+  <!--title-->
+  <h1>{{message}}</h1>
+
+  <!--error message-->
+  <div>
+    {{error}}
+    <br>
+  </div>
+
+  <!--user input for search-->
+  <form name="searchUser" ng-submit="search(username)">
+    <input type="search" required placeholder="Username to find" ng-model="username"/>
+    <input type="submit" value="Search">
+  </form>
+
+  <div ng-include="'userdetails.html'" ng-show="user"></div>
+</body>
+
+</html>
