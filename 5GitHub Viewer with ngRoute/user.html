@@ -1,0 +1,43 @@
+<!--user information-->
+<div>
+  <h2>{{user.name}}<br></h2>
+  <div>
+    {{error}}
+    <br>
+  </div>
+  <img class="resize" ng-src="{{user.avatar_url}}" title="{{user.name}}">
+  <br>Order:
+  <select ng-model="repoSortOrder">
+    <option value="+name">Name</option>
+    <option value="-stargazers_count">Stars</option>
+    <option value="+language">Language</option>
+  </select>
+</div>
+
+<!--user's github-->
+<table border="1" ng-hide="!user">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Stars</th>
+      <th>Language</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!--'repoSortOrder' contains order information-->
+    <tr ng-repeat="repo in repos | orderBy:repoSortOrder">
+      <td>
+        <a href="#/repo/{{user.login}}/{{repo.name}}">
+          {{repo.name}}
+        </a>
+      </td>
+      <td>
+        <center>{{repo.stargazers_count | number}}</center>
+      </td>
+      <td>
+        <center>{{repo.language}}</center>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<a href="#/main">Back to search</a><!--anchor tag to go to some page-->
